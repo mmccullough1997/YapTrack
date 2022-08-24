@@ -1,5 +1,8 @@
 import React from 'react';
+import Image from 'next/image';
+import GoogleButton from 'react-google-button';
 import { signIn } from '../utils/auth';
+import logo from '../images/logo.png';
 
 function Signin() {
   return (
@@ -12,11 +15,10 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
-      <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
+      <Image src={logo} className="yapTrackLogo" alt="yapTrackLogo" />
+      <GoogleButton className="googleSignInButton" onClick={signIn}>
         Sign In
-      </button>
+      </GoogleButton>
     </div>
   );
 }

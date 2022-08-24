@@ -18,5 +18,13 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #FFD4C9;
+}
+
+.googleSignInButton {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: 48px;
+  margin-top: 30px;
 }
