@@ -1,0 +1,98 @@
+{
+  "-NACB2xeaAoIlsGEZTMi": {
+    "amount": 154.76,
+    "billFirebaseKey": "-NACB2xeaAoIlsGEZTMi",
+    "dueDate": "2022-09-01T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "Nashville Electric Service",
+    "paymentUrl": "https://www.nespower.com",
+    "recurrenceName": "Monthly",
+    "tagName": "Utilities",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NACBLkl8YM1rc3qJOc7": {
+    "amount": 1623,
+    "billFirebaseKey": "-NACBLkl8YM1rc3qJOc7",
+    "dueDate": "2022-09-01T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "SWBC Mortgate",
+    "paymentUrl": "https://swbcmortgage.loanadministration.com/swbcmortgage/#/login",
+    "recurrenceName": "Monthly",
+    "tagName": "Home",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NACBZzhB8phkjY_AbPk": {
+    "amount": 45,
+    "billFirebaseKey": "-NACBZzhB8phkjY_AbPk",
+    "dueDate": "2022-09-15T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "YMCA",
+    "paymentUrl": "https://www.ymcamidtn.org/members/login",
+    "recurrenceName": "Monthly",
+    "tagName": "Health",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NACBq46JOcGrwO6IPVI": {
+    "amount": 10.98,
+    "billFirebaseKey": "-NACBq46JOcGrwO6IPVI",
+    "dueDate": "2022-09-15T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "Spotify",
+    "paymentUrl": "https://accounts.spotify.com/en/login/?continue=https%3A//open.spotify.com/__noul__%3Fl2l%3D1%26nd%3D1&_locale=en-US",
+    "recurrenceName": "Monthly",
+    "tagName": "Entertainment",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NACC0i_vbeN36jM6ym4": {
+    "amount": 192,
+    "billFirebaseKey": "-NACC0i_vbeN36jM6ym4",
+    "dueDate": "2022-09-01T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "HOA",
+    "paymentUrl": "https://mcgarr.appfolio.com/connect/users/sign_in",
+    "recurrenceName": "Monthly",
+    "tagName": "Home",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NACCEbYEuxCp7MrTOUp": {
+    "amount": 50,
+    "billFirebaseKey": "-NACCEbYEuxCp7MrTOUp",
+    "dueDate": "2022-09-10T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "Nashville Metro Water",
+    "paymentUrl": "https://mwsonline.nashville.gov/app/login.jsp",
+    "recurrenceName": "Monthly",
+    "tagName": "Utilities",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NACCORXnc6jMHgyX-V_": {
+    "amount": 55,
+    "bbillFirebaseKey": "-NACCORXnc6jMHgyX-V_",
+    "dueDate": "2022-09-15T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "Xfinity",
+    "paymentUrl": "https://login.xfinity.com/login?c_ds_na=c_ds_na%2Cc_ds_no%2Cc_ds_ts%2Cclient_id%2Ccontinue%2CforceAuthn%2Cr%2CreqId%2Cs&c_ds_no=9E9994645160C72E3D92C26B2EBFBE7F&c_ds_ts=1661300195&c_ds_val=D85328F6B19337763E6B91E6F6A81D2D344ABBDA12FB82AF70DDD8E031224F8D&client_id=my-account-web&continue=https%3A%2F%2Foauth.xfinity.com%2Foauth%2Fauthorize%3Fclient_id%3Dmy-account-web%26prompt%3Dlogin%26redirect_uri%3Dhttps%253A%252F%252Fcustomer.xfinity.com%252Foauth%252Fcallback%26response_type%3Dcode%26state%3Dhttps%253A%252F%252Fcustomer.xfinity.com%252F%253Fexcl%253D1%2526s_tnt%253D97229%25253A0%25253A0%2526adobe_mc_sdid%253DSDID%25253D6FA655D85174C5BC-31875884A137FCCD%25257CMCORGID%25253DDA11332E5321D0550A490D45%252540AdobeOrg%25257CTS%25253D1648326362%2526adobe_mc_ref%253Dhttps%25253A%25252F%25252Fjss.xfinity.com%25252F%2523%252F%26response%3D1&forceAuthn=1&r=comcast.net&reqId=6aa5034d-ebd2-4329-b9fb-bed73d8e00c3&s=oauth",
+    "recurrenceName": "Monthly",
+    "tagName": "Utilities",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NACCW5xCgAxRLHA5pAc": {
+    "amount": 30,
+    "billFirebaseKey": "-NACCW5xCgAxRLHA5pAc",
+    "dueDate": "2022-09-15T00:00:00-05:00",
+    "isClosed": false,
+    "isPaid": false,
+    "payee": "XfinityPiedmont Natural Gas",
+    "paymentUrl": "https://cass.piedmontng.com/login?redirect=/account",
+    "recurrenceName": "Monthly",
+    "tagName": "Utilities",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  }
+}

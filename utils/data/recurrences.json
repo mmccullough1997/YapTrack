@@ -1,0 +1,26 @@
+{
+  "-NACE8OqtKn5UAIyYzL2": {
+    "recurrenceFirebaseKey": "-NACE8OqtKn5UAIyYzL2",
+    "recurrenceName": "OneTime"
+  },
+  "-NACEAJ6jQ9r9RWglYuI": {
+    "recurrenceFirebaseKey": "-NACEAJ6jQ9r9RWglYuI",
+    "recurrenceName": "Annually"
+  },
+  "-NACEBnD4A8eVUWA5rBk": {
+    "recurrenceFirebaseKey": "-NACEBnD4A8eVUWA5rBk",
+    "recurrenceName": "Quarterly"
+  },
+  "-NACEDf7pzSk5demv_YJ": {
+    "recurrenceFirebaseKey": "-NACEDf7pzSk5demv_YJ",
+    "recurrenceName": "Monthly"
+  },
+  "-NACEEw2prf97i4YMkHT": {
+    "recurrenceFirebaseKey": "-NACEEw2prf97i4YMkHT",
+    "recurrenceName": "Weekly"
+  },
+  "-NACEGlr2KEiWkwYjKLc": {
+    "recurrenceFirebaseKey": "-NACEGlr2KEiWkwYjKLc",
+    "recurrenceName": "BiWeekly"
+  }
+}
