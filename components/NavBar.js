@@ -7,7 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
-  Avatar, Button as MuiButton, ListItemText, Menu, MenuItem,
+  Avatar, Button as MuiButton, Grid, ListItemText, Menu, MenuItem,
 } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -18,7 +18,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import { Nav } from 'react-bootstrap';
+// import { Nav } from 'react-bootstrap';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
 import MailIcon from '@mui/icons-material/Mail';
@@ -131,7 +131,7 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Nav.Item className="d-flex">
+          <Grid container justifyContent="flex-end">
             <div>
               <MuiButton
                 id="demo-positioned-button"
@@ -164,7 +164,7 @@ export default function MiniDrawer() {
                 </MenuItem>
               </Menu>
             </div>
-          </Nav.Item>
+          </Grid>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
