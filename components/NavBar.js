@@ -193,7 +193,7 @@ export default function MiniDrawer() {
 
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>
-            <Link passHref href="/">
+            <Link passHref href="/myBills">
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -215,7 +215,7 @@ export default function MiniDrawer() {
             </Link>
           </ListItem>
           <ListItem disablePadding sx={{ display: 'block' }}>
-            <Link passHref href="/">
+            <Link passHref href="/myPayments">
               <ListItemButton
                 sx={{
                   minHeight: 48,
