@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -5,6 +6,8 @@ import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
+import WalletIcon from '@mui/icons-material/Wallet';
+import PaymentsIcon from '@mui/icons-material/Payments';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
   Avatar, Button as MuiButton, Grid, ListItemText, Menu, MenuItem,
@@ -17,13 +20,14 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-// import { Nav } from 'react-bootstrap';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AddIcon from '@mui/icons-material/Add';
 import Link from 'next/link';
-import MailIcon from '@mui/icons-material/Mail';
+import Image from 'next/image';
 import { useAuth } from '../utils/context/authContext';
+import logo from '../images/logo.png';
 import { signOut } from '../utils/auth';
+import SearchBar from './SearchBar';
 
 const drawerWidth = 240;
 
@@ -96,6 +100,7 @@ export default function MiniDrawer() {
   const { user } = useAuth();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  console.warn(user);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -131,8 +136,19 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
+          <div className="yapTrackNavLogo">
+            <Link passHref href="/">
+              <a><Image src={logo} /></a>
+            </Link>
+          </div>
+          <Grid container justifyContent="center">
+            <SearchBar />
+          </Grid>
           <Grid container justifyContent="flex-end">
-            <div>
+            <div className="topNavIcons">
+              <Link passHref href="/bill/new">
+                <AddIcon fontSize="large" className="addIcon" />
+              </Link>
               <MuiButton
                 id="demo-positioned-button"
                 aria-controls={openMenu ? 'demo-positioned-menu' : undefined}
@@ -158,25 +174,26 @@ export default function MiniDrawer() {
                 }}
               >
                 <MenuItem onClick={handleClose}>
-                  <Link href="/" passHref>
-                    <MuiButton onClick={signOut}><LogoutIcon /> Sign Out</MuiButton>
-                  </Link>
+                  <MuiButton onClick={signOut}><LogoutIcon /> Sign Out</MuiButton>
                 </MenuItem>
               </Menu>
             </div>
           </Grid>
         </Toolbar>
       </AppBar>
+
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
+
         <Divider />
+
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <Link passHref href="/">
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -191,17 +208,14 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <WalletIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText sx={{ opacity: open ? 1 : 0 }}>My Bills</ListItemText>
               </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+            </Link>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <Link passHref href="/">
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -216,13 +230,46 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <PaymentsIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText sx={{ opacity: open ? 1 : 0 }}>My Payments</ListItemText>
               </ListItemButton>
-            </ListItem>
-          ))}
+            </Link>
+          </ListItem>
         </List>
+
+        <Divider />
+
+        <List>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+            style={{ marginTop: '500px' }}
+          >
+            <Link passHref href="/">
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+                onClick={signOut}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText sx={{ opacity: open ? 1 : 0 }}>Sign Out</ListItemText>
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        </List>
+
       </Drawer>
     </Box>
   );

@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: black;
 }
 
 a {
@@ -22,9 +23,38 @@ body {
 }
 
 .googleSignInButton {
-  display: flex;
-  justify-content: center;
   position: relative;
   left: 48px;
   margin-top: 30px;
+}
+
+.searchBar {
+  width: 30rem;
+  justify-content: center;
+}
+
+.addIcon{
+  margin-top: 6px;
+}
+
+.topNavIcons {
+  display:flex;
+}
+
+.container{
+  margin-top:85px;
+  margin-left:100px;
+  /* background-color: green; */
+  max-width:92vw;
+}
+
+.yapTrackNavLogo {
+  display:flex;
+  height: 40px;
+  width: 80px;
+  margin-right: 10px;
+}
+
+#__next{
+  background-color: #FFD4C9;
 }
