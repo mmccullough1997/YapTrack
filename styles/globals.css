@@ -65,3 +65,13 @@ body {
   justify-content: space-between;
   padding-top: 10px;
 }
+
+.billCardHeader{
+  height:auto;
+  max-height: 20px;
+  margin-top: 5px;
+}
+
+.billCard{
+  margin:10px;
+}

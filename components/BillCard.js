@@ -1,48 +1,29 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Card from 'react-bootstrap/Card';
+import PropTypes from 'prop-types';
 
-export default function BillCard() {
+function BillCard({ billObj }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={(
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        )}
-        action={(
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        )}
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>{billObj.payee}</Card.Title>
+        <hr />
+        <Card.Title>Amount Due: ${billObj.amount}</Card.Title>
+        <Card.Title>Due on: {billObj.dueDate}</Card.Title>
+        <hr />
+        <Card.Subtitle>Last Payment</Card.Subtitle>
+      </Card.Body>
     </Card>
   );
 }
+
+BillCard.propTypes = {
+  billObj: PropTypes.shape({
+    payee: PropTypes.string,
+    amount: PropTypes.number,
+    dueDate: PropTypes.string,
+    billFirebaseKey: PropTypes.string,
+  }).isRequired,
+};
+
+export default BillCard;

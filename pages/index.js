@@ -1,10 +1,24 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import { useAuth } from '../utils/context/authContext';
 
-import BillCard from '../components/BillCard';
+import { useEffect, useState } from 'react';
+import { getUserBills } from '../api/billData';
+// import BillCard from '../components/BillCard';
+import BillCards from '../components/BillCards';
+import { useAuth } from '../utils/context/authContext';
 
 function Home() {
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const date = new Date().toLocaleString();
+  const [overdueBills, setOverdueBills] = useState([]);
+  // const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    getUserBills(user.uid).then((userBillsArray) => {
+      console.warn(userBillsArray);
+      setOverdueBills(userBillsArray);
+    });
+  }, []);
 
   return (
     <div>
@@ -13,7 +27,11 @@ function Home() {
         <p>{date}</p>
       </div>
       <hr />
-      <BillCard />
+      <div className="d-flex flex-wrap">
+        {overdueBills.map((overdueBill) => (
+          <BillCards key={overdueBill.billFirebaseKey} billObj={overdueBill} />
+        ))}
+      </div>
     </div>
   );
 }
