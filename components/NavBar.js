@@ -100,7 +100,6 @@ export default function MiniDrawer() {
   const { user } = useAuth();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  console.warn(user);
 
   const handleDrawerOpen = () => {
     setOpen(true);

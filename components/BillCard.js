@@ -8,6 +8,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PropTypes from 'prop-types';
 
 export default function BillCards({ billObj }) {
+  const newDueDate = new Date(billObj.dueDate);
+
   return (
     <Card sx={{ maxWidth: 300 }} className="billCard">
       <CardHeader
@@ -17,9 +19,9 @@ export default function BillCards({ billObj }) {
       <CardContent>
         <hr />
         <Typography variant="body2" color="text.secondary">Amount Due: ${billObj.amount}</Typography>
-        <Typography variant="body2" color="text.secondary">Due on: {billObj.dueDate}</Typography>
+        <Typography variant="body2" color="text.secondary">Due on: {`${newDueDate.toLocaleString('default', { weekday: 'long' })}, ${newDueDate.getMonth() + 1}/${newDueDate.getDate()}/${newDueDate.getFullYear()}`}</Typography>
         <hr />
-        <Typography variant="paragraph" color="text.secondary">Last payment made on: {billObj.dueDate}</Typography>
+        <Typography variant="paragraph" color="text.secondary">Last payment made on: {`${newDueDate.toLocaleString('default', { weekday: 'long' })}, ${newDueDate.getMonth() + 1}/${newDueDate.getDate()}/${newDueDate.getFullYear()}`}</Typography>
       </CardContent>
       <IconButton aria-label="settings">
         <MoreVertIcon />

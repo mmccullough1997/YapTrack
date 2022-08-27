@@ -19,15 +19,28 @@ function Home() {
   useEffect(() => {
     getCurrentDate();
     getUserBills(user.uid).then((userBillsArray) => {
-      setOverdueBills(userBillsArray);
+      userBillsArray.forEach((bill) => {
+        const newDueDate = new Date(bill.dueDate);
+        if (bill.recurrenceName === 'Monthly') {
+          if (bill.isPaid === false) {
+            if (currentDate > newDueDate) {
+              const overdue = [];
+              overdue.push(bill);
+              setOverdueBills(overdue);
+            }
+          }
+        }
+      });
     });
   }, []);
+
+  const theCurrentDate = new Date();
 
   return (
     <div>
       <div className="header">
         <h5>My Dashboard</h5>
-        <p>{`${currentDate.toLocaleString('default', { weekday: 'long' })}, ${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`}</p>
+        <p>{`${theCurrentDate.toLocaleString('default', { weekday: 'long' })}, ${theCurrentDate.getMonth() + 1}/${theCurrentDate.getDate()}/${theCurrentDate.getFullYear()}`}</p>
       </div>
 
       <hr />
