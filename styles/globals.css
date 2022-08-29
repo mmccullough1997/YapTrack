@@ -76,3 +76,18 @@ body {
 .billCard{
   margin:10px;
 }
+
+.red{
+  color: red;
+  background-color: white;
+}
+
+.orange{
+  color: orange;
+  background-color: white;
+}
+
+.green{
+  color: green;
+  background-color: white;
+}

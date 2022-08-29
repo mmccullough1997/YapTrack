@@ -9,44 +9,48 @@ import { useAuth } from '../utils/context/authContext';
 function Home() {
   const { user } = useAuth();
   const [overdueBills, setOverdueBills] = useState([]);
-  const [currentDate, setCurrentDate] = useState('');
+  const [dueSoon, setDueSoon] = useState([]);
+  const [paidBills, setPaidBills] = useState([]);
 
-  const getCurrentDate = () => {
-    const date = new Date();
-    setCurrentDate(date);
+  const getOverdueBills = () => {
+    getUserBills(user.uid).then((userBillsArray) => {
+      const overdue = userBillsArray.filter((bill) => new Date() > new Date(bill.dueDate) && bill.isPaid === false);
+      setOverdueBills(overdue);
+    });
+  };
+
+  const getBillsDueSoon = () => {
+    getUserBills(user.uid).then((userBillsArray) => {
+      const notOverdueBillsArray = userBillsArray.filter((bill) => new Date() < new Date(bill.dueDate));
+      const billsDueSoon = notOverdueBillsArray.filter((bill) => bill.recurrenceName === 'Monthly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7);
+      setDueSoon(billsDueSoon);
+    });
+  };
+
+  const getPaidBills = () => {
+    getUserBills(user.uid).then((userBillsArray) => {
+      const paid = userBillsArray.filter((bill) => bill.isPaid === true);
+      setPaidBills(paid);
+    });
   };
 
   useEffect(() => {
-    getCurrentDate();
-    getUserBills(user.uid).then((userBillsArray) => {
-      userBillsArray.forEach((bill) => {
-        const newDueDate = new Date(bill.dueDate);
-        if (bill.recurrenceName === 'Monthly') {
-          if (bill.isPaid === false) {
-            if (currentDate > newDueDate) {
-              const overdue = [];
-              overdue.push(bill);
-              setOverdueBills(overdue);
-            }
-          }
-        }
-      });
-    });
+    getOverdueBills();
+    getBillsDueSoon();
+    getPaidBills();
   }, []);
-
-  const theCurrentDate = new Date();
 
   return (
     <div>
       <div className="header">
         <h5>My Dashboard</h5>
-        <p>{`${theCurrentDate.toLocaleString('default', { weekday: 'long' })}, ${theCurrentDate.getMonth() + 1}/${theCurrentDate.getDate()}/${theCurrentDate.getFullYear()}`}</p>
+        <p>{`${new Date().toLocaleString('default', { weekday: 'long' })}, ${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`}</p>
       </div>
 
       <hr />
 
       <div>
-        <h6>Overdue:</h6>
+        <h6><mark className="red">{overdueBills.length}</mark> Bills Overdue:</h6>
         <div className="d-flex flex-wrap">
           {overdueBills.map((overdueBill) => (
             <BillCard key={overdueBill.billFirebaseKey} billObj={overdueBill} />
@@ -57,10 +61,10 @@ function Home() {
       <hr />
 
       <div>
-        <h6>Due Soon:</h6>
+        <h6><mark className="orange">{dueSoon.length}</mark> Bills Due Soon:</h6>
         <div className="d-flex flex-wrap">
-          {overdueBills.map((overdueBill) => (
-            <BillCard key={overdueBill.billFirebaseKey} billObj={overdueBill} />
+          {dueSoon.map((billsDueSoon) => (
+            <BillCard key={billsDueSoon.billFirebaseKey} billObj={billsDueSoon} />
           ))}
         </div>
       </div>
@@ -68,10 +72,10 @@ function Home() {
       <hr />
 
       <div>
-        <h6>Paid:</h6>
+        <h6><mark className="green">{paidBills.length}</mark> Bills Paid:</h6>
         <div className="d-flex flex-wrap">
-          {overdueBills.map((overdueBill) => (
-            <BillCard key={overdueBill.billFirebaseKey} billObj={overdueBill} />
+          {paidBills.map((paidBill) => (
+            <BillCard key={paidBill.billFirebaseKey} billObj={paidBill} />
           ))}
         </div>
       </div>
