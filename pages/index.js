@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// import { useAuth } from '../utils/context/authContext';
 
 import { useEffect, useState } from 'react';
 import { getUserBills } from '../api/billData';
