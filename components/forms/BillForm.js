@@ -67,7 +67,11 @@ function BillForm({ obj }) {
             <Form.Control type="text" placeholder="Enter Payment URL" name="paymentUrl" value={formInput.paymentUrl} onChange={handleChange} required />
           </FloatingLabel>
 
-          <FloatingLabel controlId="floatingInput3" label="Amount" className="mb-3">
+          <FloatingLabel controlId="floatingInput2" label="Due Date" className="mb-3">
+            <Form.Control type="date" placeholder="Due Date" name="dueDate" value={formInput.dueDate} onChange={handleChange} required />
+          </FloatingLabel>
+
+          <FloatingLabel controlId="floatingInput3" className="mb-3">
             <Form.Control type="text" placeholder="Enter Amount (Dollars)" name="amount" value={formInput.amount} onChange={handleChange} required />
           </FloatingLabel>
 
@@ -101,7 +105,7 @@ function BillForm({ obj }) {
                   </FloatingLabel>
                 </div>
               ) : (
-                <FloatingLabel controlId="floatingSelect" label="recurrence">
+                <FloatingLabel controlId="floatingSelect">
                   <Form.Select aria-label="Tag" name="tagName" onChange={handleChange} className="mb-3" value={obj.tagName} required>
                     <option value="">Select Tag</option>
                     {tags.map((tag) => (
