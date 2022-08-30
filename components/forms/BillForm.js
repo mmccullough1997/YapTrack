@@ -8,6 +8,7 @@ import { useAuth } from '../../utils/context/authContext';
 import getTags from '../../api/tagData';
 import getRecurrences from '../../api/recurrenceData';
 import { createBill, updateBill } from '../../api/billData';
+// import getBillPayments, { deleteBillPayments } from '../../api/mergedData';
 
 const initialState = {
   amount: 0,
@@ -24,6 +25,14 @@ function BillForm({ obj }) {
   const [recurrences, setRecurrences] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
+
+  // const deleteThisBill = () => {
+  //   if (window.confirm('Delete this bill?')) {
+  //     getBillPayments(obj.billFirebaseKey).then(() => {
+  //       deleteBillPayments(obj.billFirebaseKey, user.uid).then(() => router.push('/'));
+  //     });
+  //   }
+  // };
 
   useEffect(() => {
     getTags().then(setTags);
@@ -126,6 +135,15 @@ function BillForm({ obj }) {
               )}
           </div>
           <Button type="submit">{obj.billFirebaseKey ? 'Update' : 'Create'} Bill</Button>
+          {/* <div>
+            { obj.billFirebaseKey
+              ? (
+                <Button type="submit" onClick={deleteThisBill}>Delete Bill</Button>
+              )
+              : (
+                <></>
+              )}
+          </div> */}
         </Form>
       </div>
     </div>
