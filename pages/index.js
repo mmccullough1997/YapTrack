@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { getUserBills, updateBill } from '../api/billData';
 import { createPayment } from '../api/paymentData';
 import BillCard from '../components/BillCard';
@@ -12,6 +13,7 @@ function Home() {
   const [overdueBills, setOverdueBills] = useState([]);
   const [dueSoon, setDueSoon] = useState([]);
   const [paidBills, setPaidBills] = useState([]);
+  const router = useRouter();
 
   const getOverdueBills = () => {
     getUserBills(user.uid).then((userBillsArray) => {
@@ -89,7 +91,7 @@ function Home() {
     getOverdueBills();
     getBillsDueSoon();
     checkPaidBills();
-  }, []);
+  }, [router]);
 
   return (
     <div>

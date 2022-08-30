@@ -9,11 +9,29 @@ import PropTypes from 'prop-types';
 import {
   ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper,
 } from '@mui/material';
+import { useRouter } from 'next/router';
+import { getSingleBill, updateBill } from '../api/billData';
 
 export default function BillCards({ billObj }) {
   const newDueDate = new Date(billObj.dueDate);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const router = useRouter();
+
+  const handlePayment = () => {
+    getSingleBill(billObj.billFirebaseKey).then((bill) => {
+      const newBillObj = {
+        amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, isClosed: bill.isClosed, isPaid: true, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
+      };
+      updateBill(newBillObj).then(() => {
+        router.push('/');
+      });
+    });
+  };
+
+  const handlePaymentPortal = () => {
+    router.push(`${billObj.paymentUrl}`);
+  };
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -72,8 +90,8 @@ export default function BillCards({ billObj }) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
-                  <MenuItem>Pay</MenuItem>
-                  <MenuItem>Mark as Paid</MenuItem>
+                  <MenuItem onClick={handlePaymentPortal}>Pay</MenuItem>
+                  <MenuItem onClick={handlePayment}>Mark as Paid</MenuItem>
                   <hr />
                   <MenuItem>Edit</MenuItem>
                 </MenuList>
@@ -91,6 +109,7 @@ BillCards.propTypes = {
     payee: PropTypes.string,
     amount: PropTypes.number,
     dueDate: PropTypes.string,
+    paymentUrl: PropTypes.string,
     billFirebaseKey: PropTypes.string,
   }).isRequired,
 };
