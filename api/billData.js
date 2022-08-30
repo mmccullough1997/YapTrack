@@ -45,6 +45,12 @@ const updateBill = (billObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleBillsPayments = (billFirebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/payments.json?orderBy="billFirebaseKey"&equalTo="${billFirebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
-  getUserBills, getSingleBill, createBill, deleteBill, updateBill,
+  getUserBills, getSingleBill, createBill, deleteBill, updateBill, getSingleBillsPayments,
 };

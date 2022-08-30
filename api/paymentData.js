@@ -30,7 +30,7 @@ const getLastBillPayment = (billFirebaseKey) => new Promise((resolve, reject) =>
     .then((response) => {
       if (response.data) {
         const payments = Object.values(response.data);
-        const sortedPayments = payments.sort((a, b) => new Date(a.paidDate) - new Date(b.paidDate));
+        const sortedPayments = payments.sort((a, b) => new Date(b.paidDate) - new Date(a.paidDate));
         resolve(sortedPayments);
       } else {
         resolve([]);
