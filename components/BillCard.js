@@ -11,12 +11,12 @@ import {
   ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper,
 } from '@mui/material';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { getSingleBill, updateBill } from '../api/billData';
 import { useAuth } from '../utils/context/authContext';
 import { createPayment, getLastBillPayment } from '../api/paymentData';
 
 export default function BillCards({ billObj }) {
-  const newDueDate = new Date(billObj.dueDate);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const router = useRouter();
@@ -71,7 +71,7 @@ export default function BillCards({ billObj }) {
       <CardContent>
         <hr />
         <Typography variant="body2" color="text.secondary">Amount Due: ${billObj.amount}</Typography>
-        <Typography variant="body2" color="text.secondary">Due on: {`${newDueDate.toLocaleString('default', { weekday: 'long' })}, ${newDueDate.getMonth() + 1}/${newDueDate.getDate()}/${newDueDate.getFullYear()}`}</Typography>
+        <Typography variant="body2" color="text.secondary">Due on: {`${new Date(billObj.dueDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(billObj.dueDate).getMonth() + 1}/${new Date(billObj.dueDate).getDate()}/${new Date(billObj.dueDate).getFullYear()}`}</Typography>
         <hr />
         <Typography variant="paragraph" color="text.secondary">{lastPaymentDate ? `Last payment made on: ${new Date(lastPaymentDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(lastPaymentDate).getMonth() + 1}/${new Date(lastPaymentDate).getDate()}/${new Date(lastPaymentDate).getFullYear()}` : 'No last Payment'}</Typography>
       </CardContent>
@@ -110,7 +110,9 @@ export default function BillCards({ billObj }) {
                   <MenuItem onClick={handlePayment}>Mark as Paid</MenuItem>
                   <MenuItem onClick={handlePaymentPortal}>Pay</MenuItem>
                   <hr />
-                  <MenuItem>Edit</MenuItem>
+                  <Link href={`/bill/edit/${billObj.billFirebaseKey}`} passHref>
+                    <MenuItem>Edit</MenuItem>
+                  </Link>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
