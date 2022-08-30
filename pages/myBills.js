@@ -16,6 +16,11 @@ export default function myBills() {
       getUserBills(user.uid).then((theBills) => {
         setUserBills(theBills);
       });
+    } else if (val === 'Closed') {
+      getUserBills(user.uid).then((theBills) => {
+        const closed = theBills.filter((bill) => bill.isClosed === true);
+        setUserBills(closed);
+      });
     } else {
       getBillsByTag(val, user.uid).then((result) => {
         setUserBills(result);
