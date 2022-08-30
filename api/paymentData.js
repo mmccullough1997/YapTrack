@@ -25,6 +25,19 @@ const createPayment = (paymentObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
+const getLastBillPayment = (billFirebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/payments.json?orderBy="billFirebaseKey"&equalTo="${billFirebaseKey}"`)
+    .then((response) => {
+      if (response.data) {
+        const payments = Object.values(response.data);
+        const sortedPayments = payments.sort((a, b) => new Date(a.paidDate) - new Date(b.paidDate));
+        resolve(sortedPayments);
+      } else {
+        resolve([]);
+      }
+    }).catch((error) => reject(error));
+});
+
 export {
-  getUserPayments, createPayment,
+  getUserPayments, createPayment, getLastBillPayment,
 };

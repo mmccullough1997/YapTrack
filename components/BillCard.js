@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -12,7 +13,7 @@ import {
 import { useRouter } from 'next/router';
 import { getSingleBill, updateBill } from '../api/billData';
 import { useAuth } from '../utils/context/authContext';
-import { createPayment } from '../api/paymentData';
+import { createPayment, getLastBillPayment } from '../api/paymentData';
 
 export default function BillCards({ billObj }) {
   const newDueDate = new Date(billObj.dueDate);
@@ -20,6 +21,7 @@ export default function BillCards({ billObj }) {
   const anchorRef = React.useRef(null);
   const router = useRouter();
   const { user } = useAuth();
+  const [lastPaymentDate, setLastPaymentDate] = React.useState('');
 
   const handlePayment = () => {
     const newPayment = {
@@ -52,6 +54,14 @@ export default function BillCards({ billObj }) {
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    getLastBillPayment(billObj.billFirebaseKey).then((billPayment) => {
+      if (billPayment[0]) {
+        setLastPaymentDate(billPayment[0].paidDate);
+      }
+    });
+  }, []);
+
   return (
     <Card sx={{ maxWidth: 300 }} className="billCard">
       <CardHeader
@@ -63,7 +73,7 @@ export default function BillCards({ billObj }) {
         <Typography variant="body2" color="text.secondary">Amount Due: ${billObj.amount}</Typography>
         <Typography variant="body2" color="text.secondary">Due on: {`${newDueDate.toLocaleString('default', { weekday: 'long' })}, ${newDueDate.getMonth() + 1}/${newDueDate.getDate()}/${newDueDate.getFullYear()}`}</Typography>
         <hr />
-        <Typography variant="paragraph" color="text.secondary">Last payment made on: {`${newDueDate.toLocaleString('default', { weekday: 'long' })}, ${newDueDate.getMonth() + 1}/${newDueDate.getDate()}/${newDueDate.getFullYear()}`}</Typography>
+        <Typography variant="paragraph" color="text.secondary">{lastPaymentDate ? `Last payment made on: ${new Date(lastPaymentDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(lastPaymentDate).getMonth() + 1}/${new Date(lastPaymentDate).getDate()}/${new Date(lastPaymentDate).getFullYear()}` : 'No last Payment'}</Typography>
       </CardContent>
       <IconButton
         aria-label="settings"
@@ -97,8 +107,8 @@ export default function BillCards({ billObj }) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
-                  <MenuItem onClick={handlePaymentPortal}>Pay</MenuItem>
                   <MenuItem onClick={handlePayment}>Mark as Paid</MenuItem>
+                  <MenuItem onClick={handlePaymentPortal}>Pay</MenuItem>
                   <hr />
                   <MenuItem>Edit</MenuItem>
                 </MenuList>
