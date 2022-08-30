@@ -25,7 +25,7 @@ export default function BillCards({ billObj }) {
 
   const handlePayment = () => {
     const newPayment = {
-      billFirebaseKey: billObj.billFirebaseKey, dueDate: billObj.dueDate, amount: billObj.amount, paidDate: new Date(), uid: user.uid,
+      billFirebaseKey: billObj.billFirebaseKey, dueDate: billObj.dueDate, amount: billObj.amount, paidDate: new Date(), uid: user.uid, payee: billObj.payee,
     };
     createPayment(newPayment);
     getSingleBill(billObj.billFirebaseKey).then((bill) => {
@@ -73,7 +73,7 @@ export default function BillCards({ billObj }) {
         <Typography variant="body2" color="text.secondary">Amount Due: ${billObj.amount}</Typography>
         <Typography variant="body2" color="text.secondary">Due on: {`${new Date(billObj.dueDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(billObj.dueDate).getMonth() + 1}/${new Date(billObj.dueDate).getDate()}/${new Date(billObj.dueDate).getFullYear()}`}</Typography>
         <hr />
-        <Typography variant="paragraph" color="text.secondary">{lastPaymentDate ? `Last payment made on: ${new Date(lastPaymentDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(lastPaymentDate).getMonth() + 1}/${new Date(lastPaymentDate).getDate()}/${new Date(lastPaymentDate).getFullYear()}` : 'No last Payment'}</Typography>
+        <Typography variant="paragraph" color="text.secondary">{lastPaymentDate ? `Last payment made on: ${new Date(lastPaymentDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(lastPaymentDate).getMonth() + 1}/${new Date(lastPaymentDate).getDate()}/${new Date(lastPaymentDate).getFullYear()}` : 'No Payments'}</Typography>
       </CardContent>
       <IconButton
         aria-label="settings"

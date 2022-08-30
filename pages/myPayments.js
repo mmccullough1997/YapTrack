@@ -39,27 +39,27 @@ export default function myPayments() {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={0.5}>
           <Grid xs>
-            <Item className="paymentsHeader">Name</Item>
+            <Item className="paymentsHeader"><b>Name</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>{bill.billFirebaseKey}</Item>
+              <Item>{bill.payee}</Item>
             ))}
           </Grid>
           <Grid xs>
-            <Item className="paymentsHeader">Amount Paid</Item>
+            <Item className="paymentsHeader"><b>Amount Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>{bill.amount}</Item>
+              <Item>${bill.amount}</Item>
             ))}
           </Grid>
           <Grid xs>
-            <Item className="paymentsHeader">Date Paid</Item>
+            <Item className="paymentsHeader"><b>Date Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>{bill.paidDate}</Item>
+              <Item>{new Date(bill.paidDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
           <Grid xs>
-            <Item className="paymentsHeader">Date Due</Item>
+            <Item className="paymentsHeader"><b>Date Due</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>{bill.dueDate}</Item>
+              <Item>{new Date(bill.dueDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
         </Grid>
