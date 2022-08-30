@@ -1,7 +1,9 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useState } from 'react';
 import { getUserBills } from '../api/billData';
+import { createPayment } from '../api/paymentData';
 import BillCard from '../components/BillCard';
 import { useAuth } from '../utils/context/authContext';
 
@@ -27,17 +29,26 @@ function Home() {
     });
   };
 
-  const getPaidBills = () => {
+  const checkPaidBills = () => {
     getUserBills(user.uid).then((userBillsArray) => {
-      const paid = userBillsArray.filter((bill) => bill.isPaid === true);
+      const paid = userBillsArray.filter((bill) => bill.isPaid === true && new Date() <= new Date(bill.dueDate));
       setPaidBills(paid);
+      const paidBillAndDue = userBillsArray.filter((bill) => bill.isPaid === true && new Date() > new Date(bill.dueDate));
+      paidBillAndDue.forEach((bill) => {
+        if (bill.recurrenceName === 'Monthly') {
+          const newPayment = {
+            billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, amount: bill.amount, paidDate: new Date(), uid: user.uid,
+          };
+          createPayment(newPayment);
+        }
+      });
     });
   };
 
   useEffect(() => {
     getOverdueBills();
     getBillsDueSoon();
-    getPaidBills();
+    checkPaidBills();
   }, []);
 
   return (
