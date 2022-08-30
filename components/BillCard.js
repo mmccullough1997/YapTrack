@@ -11,14 +11,21 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { getSingleBill, updateBill } from '../api/billData';
+import { useAuth } from '../utils/context/authContext';
+import { createPayment } from '../api/paymentData';
 
 export default function BillCards({ billObj }) {
   const newDueDate = new Date(billObj.dueDate);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const router = useRouter();
+  const { user } = useAuth();
 
   const handlePayment = () => {
+    const newPayment = {
+      billFirebaseKey: billObj.billFirebaseKey, dueDate: billObj.dueDate, amount: billObj.amount, paidDate: new Date(), uid: user.uid,
+    };
+    createPayment(newPayment);
     getSingleBill(billObj.billFirebaseKey).then((bill) => {
       const newBillObj = {
         amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, isClosed: bill.isClosed, isPaid: true, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,

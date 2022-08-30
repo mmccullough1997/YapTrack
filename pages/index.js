@@ -4,7 +4,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getUserBills, updateBill } from '../api/billData';
-import { createPayment } from '../api/paymentData';
 import BillCard from '../components/BillCard';
 import { useAuth } from '../utils/context/authContext';
 
@@ -38,46 +37,26 @@ function Home() {
       const paidBillAndDue = userBillsArray.filter((bill) => bill.isPaid === true && new Date() > new Date(bill.dueDate));
       paidBillAndDue.forEach((bill) => {
         if (bill.recurrenceName === 'Monthly') {
-          const newPayment = {
-            billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, amount: bill.amount, paidDate: new Date(), uid: user.uid,
-          };
-          createPayment(newPayment);
           const newBillObj = {
             amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: new Date(new Date(bill.dueDate).setMonth(new Date(bill.dueDate).getMonth() + 1)).toISOString(), isClosed: bill.isClosed, isPaid: false, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
           updateBill(newBillObj);
         } else if (bill.recurrenceName === 'Weekly') {
-          const newPayment = {
-            billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, amount: bill.amount, paidDate: new Date(), uid: user.uid,
-          };
-          createPayment(newPayment);
           const newBillObj = {
             amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: new Date(new Date(bill.dueDate).setDate(new Date(bill.dueDate).getDate() + 7)).toISOString(), isClosed: bill.isClosed, isPaid: false, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
           updateBill(newBillObj);
         } else if (bill.recurrenceName === 'BiWeekly') {
-          const newPayment = {
-            billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, amount: bill.amount, paidDate: new Date(), uid: user.uid,
-          };
-          createPayment(newPayment);
           const newBillObj = {
             amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: new Date(new Date(bill.dueDate).setDate(new Date(bill.dueDate).getDate() + 14)).toISOString(), isClosed: bill.isClosed, isPaid: false, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
           updateBill(newBillObj);
         } else if (bill.recurrenceName === 'Quarterly') {
-          const newPayment = {
-            billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, amount: bill.amount, paidDate: new Date(), uid: user.uid,
-          };
-          createPayment(newPayment);
           const newBillObj = {
             amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: new Date(new Date(bill.dueDate).setDate(new Date(bill.dueDate).getDate() + 90)).toISOString(), isClosed: bill.isClosed, isPaid: false, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
           updateBill(newBillObj);
         } else if (bill.recurrenceName === 'Annually') {
-          const newPayment = {
-            billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, amount: bill.amount, paidDate: new Date(), uid: user.uid,
-          };
-          createPayment(newPayment);
           const newBillObj = {
             amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: new Date(new Date(bill.dueDate).setDate(new Date(bill.dueDate).getFullYear() + 1)).toISOString(), isClosed: bill.isClosed, isPaid: false, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
