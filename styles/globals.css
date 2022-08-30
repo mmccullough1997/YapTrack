@@ -91,3 +91,7 @@ body {
   color: green;
   background-color: white;
 }
+
+.paymentsHeader{
+  font-family: 'Courier New', Courier, monospace;
+}

@@ -30,28 +30,34 @@ export default function myPayments() {
 
   return (
     <div>
+      <div className="header">
+        <h5>My Payments</h5>
+        <p>{`${new Date().toLocaleString('default', { weekday: 'long' })}, ${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`}</p>
+      </div>
+
+      <hr />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={0.5}>
           <Grid xs>
-            <Item>Name</Item>
+            <Item className="paymentsHeader">Name</Item>
             {lastestBillPayments?.map((bill) => (
               <Item>{bill.billFirebaseKey}</Item>
             ))}
           </Grid>
           <Grid xs>
-            <Item>Amount Paid</Item>
+            <Item className="paymentsHeader">Amount Paid</Item>
             {lastestBillPayments?.map((bill) => (
               <Item>{bill.amount}</Item>
             ))}
           </Grid>
           <Grid xs>
-            <Item>Date Paid</Item>
+            <Item className="paymentsHeader">Date Paid</Item>
             {lastestBillPayments?.map((bill) => (
               <Item>{bill.paidDate}</Item>
             ))}
           </Grid>
           <Grid xs>
-            <Item>Date Due</Item>
+            <Item className="paymentsHeader">Date Due</Item>
             {lastestBillPayments?.map((bill) => (
               <Item>{bill.dueDate}</Item>
             ))}

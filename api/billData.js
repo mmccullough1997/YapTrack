@@ -20,6 +20,14 @@ const getSingleBill = (billFirebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getBillsByTag = (tag, uid) => new Promise((resolve, reject) => {
+  getUserBills(uid).then((bills) => {
+    const filteredBills = bills.filter((theBill) => theBill.tagName === tag);
+    resolve(filteredBills);
+  })
+    .catch((error) => reject(error));
+});
+
 const createBill = (billObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/bills.json`, billObj)
     .then((response) => {
@@ -52,5 +60,5 @@ const getSingleBillsPayments = (billFirebaseKey) => new Promise((resolve, reject
 });
 
 export {
-  getUserBills, getSingleBill, createBill, deleteBill, updateBill, getSingleBillsPayments,
+  getUserBills, getSingleBill, createBill, deleteBill, updateBill, getSingleBillsPayments, getBillsByTag,
 };
