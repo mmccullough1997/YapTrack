@@ -53,7 +53,6 @@ function BillForm({ obj }) {
     if (obj.billFirebaseKey) {
       formInput.dueDate = new Date(new Date(formInput.dueDate).setDate(new Date(formInput.dueDate).getDate() + 1)).toISOString();
       formInput.amount = parseInt(formInput.amount, 10);
-      console.warn(formInput);
       updateBill(formInput, formInput.billFirebaseKey)
         .then(() => router.push('/'));
     } else {
@@ -82,7 +81,7 @@ function BillForm({ obj }) {
           </FloatingLabel>
 
           <FloatingLabel controlId="floatingInput2" label="Due Date" className="mb-3">
-            <Form.Control type="date" placeholder="Due Date" name="dueDate" value={formInput.dueDate} onChange={handleChange} required />
+            <Form.Control type="date" placeholder="Due Date" name="dueDate" value={obj.billFirebaseKey ? formInput.dueDate.substring(0, 10) : formInput.dueDate} onChange={handleChange} required />
           </FloatingLabel>
 
           <FloatingLabel controlId="floatingInput3" className="mb-3">
