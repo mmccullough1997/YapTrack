@@ -16,25 +16,25 @@ function Home() {
 
   const getOverdueBills = () => {
     getUserBills(user.uid).then((userBillsArray) => {
-      const overdue = userBillsArray.filter((bill) => new Date() > new Date(bill.dueDate) && bill.isPaid === false);
+      const overdue = userBillsArray.filter((bill) => new Date() > new Date(bill.dueDate) && bill.isPaid === false && bill.isClosed === false);
       setOverdueBills(overdue);
     });
   };
 
   const getBillsDueSoon = () => {
     getUserBills(user.uid).then((userBillsArray) => {
-      const notOverdueBillsArray = userBillsArray.filter((bill) => new Date() < new Date(bill.dueDate));
+      const notOverdueBillsArray = userBillsArray.filter((bill) => new Date() < new Date(bill.dueDate) && bill.isClosed === false);
       // eslint-disable-next-line max-len
-      const billsDueSoon = notOverdueBillsArray.filter((bill) => (bill.recurrenceName === 'Monthly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7) || (bill.recurrenceName === 'Weekly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 3) || (bill.recurrenceName === 'BiWeekly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 5) || (bill.recurrenceName === 'Quarterly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7) || (bill.recurrenceName === 'Annually' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7));
+      const billsDueSoon = notOverdueBillsArray.filter((bill) => (bill.recurrenceName === 'Monthly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7) || (bill.recurrenceName === 'Weekly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 3) || (bill.recurrenceName === 'BiWeekly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 5) || (bill.recurrenceName === 'Quarterly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7) || (bill.recurrenceName === 'Annually' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7) || (bill.recurrenceName === 'Once' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7));
       setDueSoon(billsDueSoon);
     });
   };
 
   const checkPaidBills = () => {
     getUserBills(user.uid).then((userBillsArray) => {
-      const paid = userBillsArray.filter((bill) => bill.isPaid === true && new Date() <= new Date(bill.dueDate));
+      const paid = userBillsArray.filter((bill) => bill.isPaid === true && new Date() <= new Date(bill.dueDate) && bill.isClosed === false);
       setPaidBills(paid);
-      const paidBillAndDue = userBillsArray.filter((bill) => bill.isPaid === true && new Date() > new Date(bill.dueDate));
+      const paidBillAndDue = userBillsArray.filter((bill) => bill.isPaid === true && new Date() > new Date(bill.dueDate) && bill.isClosed === false);
       paidBillAndDue.forEach((bill) => {
         if (bill.recurrenceName === 'Monthly') {
           const newBillObj = {
@@ -59,6 +59,11 @@ function Home() {
         } else if (bill.recurrenceName === 'Annually') {
           const newBillObj = {
             amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: new Date(new Date(bill.dueDate).setDate(new Date(bill.dueDate).getFullYear() + 1)).toISOString(), isClosed: bill.isClosed, isPaid: false, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
+          };
+          updateBill(newBillObj);
+        } else {
+          const newBillObj = {
+            amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, isClosed: true, isPaid: true, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
           updateBill(newBillObj);
         }
