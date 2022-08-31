@@ -22,7 +22,6 @@ export default function myPayments() {
 
   React.useEffect(() => {
     getUserPayments(user.uid).then((billPaymentsArray) => {
-      console.warn(billPaymentsArray);
       const sortedUserBillPayments = billPaymentsArray.sort((a, b) => new Date(b.paidDate) - new Date(a.paidDate));
       setLatestBillPayments(sortedUserBillPayments);
     });

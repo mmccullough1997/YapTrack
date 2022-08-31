@@ -51,12 +51,17 @@ function BillForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.billFirebaseKey) {
+      formInput.dueDate = new Date(new Date(formInput.dueDate).setDate(new Date(formInput.dueDate).getDate() + 1)).toISOString();
+      formInput.amount = parseInt(formInput.amount, 10);
+      console.warn(formInput);
       updateBill(formInput, formInput.billFirebaseKey)
         .then(() => router.push('/'));
     } else {
       const payload = {
         ...formInput, uid: user.uid,
       };
+      payload.dueDate = new Date(new Date(payload.dueDate).setDate(new Date(payload.dueDate).getDate() + 1)).toISOString();
+      payload.amount = parseInt(payload.amount, 10);
       createBill(payload).then(() => router.push('/myBills'));
     }
   };
