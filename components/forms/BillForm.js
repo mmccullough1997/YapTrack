@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import getTags from '../../api/tagData';
 import getRecurrences from '../../api/recurrenceData';
@@ -25,14 +24,6 @@ function BillForm({ obj }) {
   const [recurrences, setRecurrences] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-
-  // const deleteThisBill = () => {
-  //   if (window.confirm('Delete this bill?')) {
-  //     getBillPayments(obj.billFirebaseKey).then(() => {
-  //       deleteBillPayments(obj.billFirebaseKey, user.uid).then(() => router.push('/'));
-  //     });
-  //   }
-  // };
 
   useEffect(() => {
     getTags().then(setTags);
@@ -138,16 +129,6 @@ function BillForm({ obj }) {
                 </FloatingLabel>
               )}
           </div>
-          <Button type="submit">{obj.billFirebaseKey ? 'Update' : 'Create'} Bill</Button>
-          {/* <div>
-            { obj.billFirebaseKey
-              ? (
-                <Button type="submit" onClick={deleteThisBill}>Delete Bill</Button>
-              )
-              : (
-                <></>
-              )}
-          </div> */}
         </Form>
       </div>
     </div>

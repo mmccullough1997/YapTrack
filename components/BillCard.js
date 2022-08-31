@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { getSingleBill, updateBill } from '../api/billData';
+import { deleteBill, getSingleBill, updateBill } from '../api/billData';
 import { useAuth } from '../utils/context/authContext';
 import { createPayment, getLastBillPayment } from '../api/paymentData';
 
@@ -22,6 +22,14 @@ export default function BillCards({ billObj }) {
   const router = useRouter();
   const { user } = useAuth();
   const [lastPaymentDate, setLastPaymentDate] = React.useState('');
+
+  const deleteTheBill = () => {
+    if (window.confirm('Delete this bill? Previous payments will not be erased.')) {
+      deleteBill(billObj.billFirebaseKey).then(() => {
+        router.push('/');
+      });
+    }
+  };
 
   const handlePayment = () => {
     const newPayment = {
@@ -113,6 +121,7 @@ export default function BillCards({ billObj }) {
                   <Link href={`/bill/edit/${billObj.billFirebaseKey}`} passHref>
                     <MenuItem>Edit</MenuItem>
                   </Link>
+                  <MenuItem onClick={deleteTheBill}>Delete Bill</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
