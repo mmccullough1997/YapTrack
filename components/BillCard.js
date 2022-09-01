@@ -66,7 +66,7 @@ export default function BillCards({ billObj }) {
   };
 
   React.useEffect(() => {
-    getLastBillPayment(billObj.billFirebaseKey).then((billPayment) => {
+    getLastBillPayment(billObj?.billFirebaseKey).then((billPayment) => {
       if (billPayment[0]) {
         setLastPaymentDate(billPayment[0].paidDate);
       }
@@ -77,12 +77,12 @@ export default function BillCards({ billObj }) {
     <Card sx={{ maxWidth: 300 }} className="billCard">
       <CardHeader
         className="billCardHeader"
-        subheader={billObj.payee}
+        subheader={billObj?.payee}
       />
       <CardContent>
         <hr />
-        <Typography variant="body2" color="text.secondary">Amount Due: ${billObj.amount}</Typography>
-        <Typography variant="body2" color="text.secondary">Due on: {`${new Date(billObj.dueDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(billObj.dueDate).getMonth() + 1}/${new Date(billObj.dueDate).getDate()}/${new Date(billObj.dueDate).getFullYear()}`}</Typography>
+        <Typography variant="body2" color="text.secondary">Amount Due: ${billObj?.amount}</Typography>
+        <Typography variant="body2" color="text.secondary">Due on: {`${new Date(billObj?.dueDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(billObj?.dueDate).getMonth() + 1}/${new Date(billObj?.dueDate).getDate()}/${new Date(billObj?.dueDate).getFullYear()}`}</Typography>
         <hr />
         <Typography variant="paragraph" color="text.secondary">{lastPaymentDate ? `Last payment made on: ${new Date(lastPaymentDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(lastPaymentDate).getMonth() + 1}/${new Date(lastPaymentDate).getDate()}/${new Date(lastPaymentDate).getFullYear()}` : 'No Payments'}</Typography>
       </CardContent>
@@ -121,7 +121,7 @@ export default function BillCards({ billObj }) {
                   <MenuItem onClick={handlePayment}>Mark as Paid</MenuItem>
                   <MenuItem onClick={handlePaymentPortal}>Pay</MenuItem>
                   <hr />
-                  <Link href={`/bill/edit/${billObj.billFirebaseKey}`} passHref>
+                  <Link href={`/bill/edit/${billObj?.billFirebaseKey}`} passHref>
                     <MenuItem>Edit</MenuItem>
                   </Link>
                   <MenuItem onClick={deleteTheBill}>Delete Bill</MenuItem>
@@ -143,4 +143,11 @@ BillCards.propTypes = {
     paymentUrl: PropTypes.string,
     billFirebaseKey: PropTypes.string,
   }).isRequired,
+  router: PropTypes.string,
+  name: PropTypes.string,
+};
+
+BillCards.defaultProps = {
+  router: '',
+  name: '',
 };
