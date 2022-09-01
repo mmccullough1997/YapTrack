@@ -46,6 +46,12 @@ const deletePayment = (paymentFirebaseKey, uid) => new Promise((resolve, reject)
     .catch((error) => reject(error));
 });
 
+const getTheBillPayments = (billFirebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/payments.json?orderBy="billFirebaseKey"&equalTo="${billFirebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch(reject);
+});
+
 export {
-  getUserPayments, createPayment, getLastBillPayment, deletePayment,
+  getUserPayments, createPayment, getLastBillPayment, deletePayment, getTheBillPayments,
 };

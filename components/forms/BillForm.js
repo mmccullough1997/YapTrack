@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import getTags from '../../api/tagData';
 import getRecurrences from '../../api/recurrenceData';
@@ -129,6 +130,7 @@ function BillForm({ obj }) {
                 </FloatingLabel>
               )}
           </div>
+          <Button type="submit">{obj.billFirebaseKey ? 'Update' : 'Create'} Bill</Button>
         </Form>
       </div>
     </div>

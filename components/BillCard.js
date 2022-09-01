@@ -12,9 +12,10 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { deleteBill, getSingleBill, updateBill } from '../api/billData';
+import { getSingleBill, updateBill } from '../api/billData';
 import { useAuth } from '../utils/context/authContext';
 import { createPayment, getLastBillPayment } from '../api/paymentData';
+import { deleteBillPayments, getBillPayments } from '../api/mergedData';
 
 export default function BillCards({ billObj }) {
   const [open, setOpen] = React.useState(false);
@@ -25,8 +26,10 @@ export default function BillCards({ billObj }) {
 
   const deleteTheBill = () => {
     if (window.confirm('Delete this bill? Previous payments will not be erased.')) {
-      deleteBill(billObj.billFirebaseKey).then(() => {
-        router.push('/');
+      getBillPayments(billObj.billFirebaseKey).then(() => {
+        deleteBillPayments(billObj.billFirebaseKey, user.uid).then(() => {
+          router.push('/');
+        });
       });
     }
   };

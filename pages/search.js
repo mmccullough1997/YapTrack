@@ -8,12 +8,14 @@
 //   const { user } = useAuth();
 //   const router = useRouter();
 //   const [filteredData, setFilteredData] = useState([]);
+//   const [billData, setBillData] = useState([]);
 
 //   const getBills = () => {
 //     getUserBills(user.uid).then((billArr) => {
 //       const value = router.query.keyword;
+//       setBillData(billArr);
 //       setFilteredData(billArr);
-//       const results = billArr.filter((bill) => bill.payee.toLowerCase().includes(value.toLowerCase()));
+//       const results = billData.filter((bill) => bill.payee.toLowerCase().includes(value.toLowerCase()));
 //       setFilteredData(results);
 //     });
 //   };
