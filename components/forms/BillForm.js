@@ -76,7 +76,7 @@ function BillForm({ obj }) {
             <Form.Control type="date" placeholder="Due Date" name="dueDate" value={obj.billFirebaseKey ? formInput.dueDate.substring(0, 10) : formInput.dueDate} onChange={handleChange} required />
           </FloatingLabel>
 
-          <FloatingLabel controlId="floatingInput3" className="mb-3">
+          <FloatingLabel controlId="floatingInput3" label="Amount" className="mb-3">
             <Form.Control type="text" placeholder="Enter Amount (Dollars)" name="amount" value={formInput.amount} onChange={handleChange} required />
           </FloatingLabel>
 
