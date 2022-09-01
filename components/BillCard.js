@@ -25,7 +25,7 @@ export default function BillCards({ billObj }) {
   const [lastPaymentDate, setLastPaymentDate] = React.useState('');
 
   const deleteTheBill = () => {
-    if (window.confirm('Delete this bill? Previous payments will not be erased.')) {
+    if (window.confirm('Delete this bill? Previous payments will be erased. If you wish to keep records of payments, please consider closing the bill instead.')) {
       getBillPayments(billObj.billFirebaseKey).then(() => {
         deleteBillPayments(billObj.billFirebaseKey, user.uid).then(() => {
           router.push('/');
