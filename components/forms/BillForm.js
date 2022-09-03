@@ -43,9 +43,10 @@ function BillForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.billFirebaseKey) {
-      formInput.dueDate = new Date(new Date(formInput.dueDate).setDate(new Date(formInput.dueDate).getDate() + 1)).toISOString();
-      formInput.amount = parseInt(formInput.amount, 10);
-      updateBill(formInput, formInput.billFirebaseKey)
+      const formInputCopy = formInput;
+      formInputCopy.dueDate = new Date(new Date(formInputCopy.dueDate).setDate(new Date(formInputCopy.dueDate).getDate() + 1)).toISOString();
+      formInputCopy.amount = parseInt(formInputCopy.amount, 10);
+      updateBill(formInputCopy, formInputCopy.billFirebaseKey)
         .then(() => router.push('/'));
     } else {
       const payload = {
@@ -76,8 +77,8 @@ function BillForm({ obj }) {
             <Form.Control type="date" placeholder="Due Date" name="dueDate" value={obj.billFirebaseKey ? formInput.dueDate.substring(0, 10) : formInput.dueDate} onChange={handleChange} required />
           </FloatingLabel>
 
-          <FloatingLabel controlId="floatingInput3" label="Amount" className="mb-3">
-            <Form.Control type="text" placeholder="Enter Amount (Dollars)" name="amount" value={formInput.amount} onChange={handleChange} required />
+          <FloatingLabel controlId="floatingInput3" label="Amount ($)" className="mb-3">
+            <Form.Control type="number" placeholder="Enter Amount (Dollars)" name="amount" value={formInput.amount} onChange={handleChange} required />
           </FloatingLabel>
 
           <div>

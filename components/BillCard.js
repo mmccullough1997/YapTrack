@@ -66,11 +66,18 @@ export default function BillCards({ billObj }) {
   };
 
   React.useEffect(() => {
+    let mounted = true;
     getLastBillPayment(billObj?.billFirebaseKey).then((billPayment) => {
-      if (billPayment[0]) {
-        setLastPaymentDate(billPayment[0].paidDate);
+      if (mounted) {
+        if (billPayment[0]) {
+          setLastPaymentDate(billPayment[0].paidDate);
+        }
       }
     });
+
+    return function cleanup() {
+      mounted = false;
+    };
   }, []);
 
   return (
@@ -118,7 +125,12 @@ export default function BillCards({ billObj }) {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
-                  <MenuItem onClick={handlePayment}>Mark as Paid</MenuItem>
+                  {billObj.isPaid === false
+                    ? (
+                      <MenuItem onClick={handlePayment}>Mark as Paid</MenuItem>
+                    ) : (
+                      <div />
+                    )}
                   <MenuItem onClick={handlePaymentPortal}>Pay</MenuItem>
                   <hr />
                   <Link href={`/bill/edit/${billObj?.billFirebaseKey}`} passHref>
@@ -141,6 +153,7 @@ BillCards.propTypes = {
     amount: PropTypes.number,
     dueDate: PropTypes.string,
     paymentUrl: PropTypes.string,
+    isPaid: PropTypes.bool,
     billFirebaseKey: PropTypes.string,
   }).isRequired,
   router: PropTypes.string,
