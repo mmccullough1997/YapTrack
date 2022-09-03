@@ -89,7 +89,7 @@ export default function BillCards({ billObj }) {
       <CardContent>
         <hr />
         <Typography variant="body2" color="text.secondary">Amount Due: ${billObj?.amount}</Typography>
-        <Typography variant="body2" color="text.secondary">Due on: {`${new Date(billObj?.dueDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(billObj?.dueDate).getMonth() + 1}/${new Date(billObj?.dueDate).getDate()}/${new Date(billObj?.dueDate).getFullYear()}`}</Typography>
+        <Typography variant="body2" color="text.secondary">Due on: {billObj?.dueDate === '' ? 'No due date' : `${new Date(billObj?.dueDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(billObj?.dueDate).getMonth() + 1}/${new Date(billObj?.dueDate).getDate()}/${new Date(billObj?.dueDate).getFullYear()}`}</Typography>
         <hr />
         <Typography variant="paragraph" color="text.secondary">{lastPaymentDate ? `Last payment made on: ${new Date(lastPaymentDate).toLocaleString('default', { weekday: 'long' })}, ${new Date(lastPaymentDate).getMonth() + 1}/${new Date(lastPaymentDate).getDate()}/${new Date(lastPaymentDate).getFullYear()}` : 'No Payments'}</Typography>
       </CardContent>

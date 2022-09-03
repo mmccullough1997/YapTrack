@@ -61,9 +61,9 @@ function Home() {
             amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: new Date(new Date(bill.dueDate).setDate(new Date(bill.dueDate).getFullYear() + 1)).toISOString(), isClosed: bill.isClosed, isPaid: false, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
           updateBill(newBillObj);
-        } else {
+        } else if (bill.recurrenceName === 'Once') {
           const newBillObj = {
-            amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: bill.dueDate, isClosed: true, isPaid: true, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
+            amount: bill.amount, billFirebaseKey: bill.billFirebaseKey, dueDate: '', isClosed: true, isPaid: true, payee: bill.payee, paymentUrl: bill.paymentUrl, recurrenceName: bill.recurrenceName, tagName: bill.tagName, uid: bill.uid,
           };
           updateBill(newBillObj);
         }
