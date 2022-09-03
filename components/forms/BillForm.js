@@ -40,7 +40,6 @@ function BillForm({ obj }) {
     }));
   };
 
-  // what happens if a bill is marked as paid twice in current billing cycle
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.billFirebaseKey) {
