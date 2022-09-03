@@ -40,12 +40,16 @@ function BillForm({ obj }) {
     }));
   };
 
+  // make shallow copies of state variables that are directly affected
+  // make sure if bill is closed you can't perform action on it
+  // what happens if a bill is marked as paid twice in current billing cycle
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.billFirebaseKey) {
-      formInput.dueDate = new Date(new Date(formInput.dueDate).setDate(new Date(formInput.dueDate).getDate() + 1)).toISOString();
-      formInput.amount = parseInt(formInput.amount, 10);
-      updateBill(formInput, formInput.billFirebaseKey)
+      const formInputCopy = formInput;
+      formInputCopy.dueDate = new Date(new Date(formInputCopy.dueDate).setDate(new Date(formInputCopy.dueDate).getDate() + 1)).toISOString();
+      formInputCopy.amount = parseInt(formInputCopy.amount, 10);
+      updateBill(formInputCopy, formInputCopy.billFirebaseKey)
         .then(() => router.push('/'));
     } else {
       const payload = {
