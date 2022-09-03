@@ -61,7 +61,6 @@ function BillForm({ obj }) {
   return (
     <div>
       <div>
-        <h1>Add a Bill</h1>
         <Form onSubmit={handleSubmit}>
           <h2 className="text-black mt-5">{obj.billFirebaseKey ? 'Update' : 'Create'} Bill</h2>
 
