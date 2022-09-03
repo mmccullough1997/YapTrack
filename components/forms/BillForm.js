@@ -40,8 +40,6 @@ function BillForm({ obj }) {
     }));
   };
 
-  // make shallow copies of state variables that are directly affected
-  // make sure if bill is closed you can't perform action on it
   // what happens if a bill is marked as paid twice in current billing cycle
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,8 +78,8 @@ function BillForm({ obj }) {
             <Form.Control type="date" placeholder="Due Date" name="dueDate" value={obj.billFirebaseKey ? formInput.dueDate.substring(0, 10) : formInput.dueDate} onChange={handleChange} required />
           </FloatingLabel>
 
-          <FloatingLabel controlId="floatingInput3" label="Amount" className="mb-3">
-            <Form.Control type="text" placeholder="Enter Amount (Dollars)" name="amount" value={formInput.amount} onChange={handleChange} required />
+          <FloatingLabel controlId="floatingInput3" label="Amount ($)" className="mb-3">
+            <Form.Control type="number" placeholder="Enter Amount (Dollars)" name="amount" value={formInput.amount} onChange={handleChange} required />
           </FloatingLabel>
 
           <div>
