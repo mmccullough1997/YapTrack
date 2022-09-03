@@ -21,10 +21,16 @@ export default function myPayments() {
   }));
 
   React.useEffect(() => {
+    let mounted = true;
     getUserPayments(user.uid).then((billPaymentsArray) => {
-      const sortedUserBillPayments = billPaymentsArray.sort((a, b) => new Date(b.paidDate) - new Date(a.paidDate));
-      setLatestBillPayments(sortedUserBillPayments);
+      if (mounted) {
+        const sortedUserBillPayments = billPaymentsArray.sort((a, b) => new Date(b.paidDate) - new Date(a.paidDate));
+        setLatestBillPayments(sortedUserBillPayments);
+      }
     });
+    return function cleanup() {
+      mounted = false;
+    };
   }, []);
 
   return (
@@ -40,25 +46,25 @@ export default function myPayments() {
           <Grid xs>
             <Item className="paymentsHeader"><b>Name</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>{bill.payee}</Item>
+              <Item key={bill.billFirebaseKey}>{bill.payee}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Amount Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>${bill.amount}</Item>
+              <Item key={bill.billFirebaseKey}>${bill.amount}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Date Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>{new Date(bill.paidDate).toLocaleDateString()}</Item>
+              <Item key={bill.billFirebaseKey}>{new Date(bill.paidDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Date Due</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item>{new Date(bill.dueDate).toLocaleDateString()}</Item>
+              <Item key={bill.billFirebaseKey}>{new Date(bill.dueDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
         </Grid>

@@ -1,6 +1,6 @@
 # Welcome to Yaptrack!
 
-YapTrack is the front-end capstone project for NSS cohort E-19. 
+YapTrack is my front-end capstone project for NSS cohort E-19. 
 
 YapTrack is designed to keep track of all of your bills in one place! With a simple, easy-to-use interface, you can see which bills are overdue, due soon, or even paid! 
 

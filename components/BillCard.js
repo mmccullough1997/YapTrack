@@ -66,11 +66,18 @@ export default function BillCards({ billObj }) {
   };
 
   React.useEffect(() => {
+    let mounted = true;
     getLastBillPayment(billObj?.billFirebaseKey).then((billPayment) => {
-      if (billPayment[0]) {
-        setLastPaymentDate(billPayment[0].paidDate);
+      if (mounted) {
+        if (billPayment[0]) {
+          setLastPaymentDate(billPayment[0].paidDate);
+        }
       }
     });
+
+    return function cleanup() {
+      mounted = false;
+    };
   }, []);
 
   return (
