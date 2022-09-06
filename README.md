@@ -128,4 +128,4 @@ https://www.figma.com/file/wM26rmGFAyLzIIqV0ebb6i/YapTrack-WireFrame
 Link to LucidChart for ERD:
 https://lucid.app/lucidchart/f480fe95-3301-41b2-b35a-1eec25d9b870/edit?viewport_loc=-668%2C-1350%2C4032%2C1605%2C0_0&invitationId=inv_68e0f9e8-df49-436c-9a57-f83b4719ea13#
 
-Please pay me if you made it this far. Venmo @mmccullough9999
+Please pay me if you made it this far. Venmo @mmccullough1997
