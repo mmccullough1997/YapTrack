@@ -96,3 +96,17 @@ body {
 .paymentsHeader{
   font-family: 'Courier New', Courier, monospace;
 }
+
+.paymentFilter{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.submitPaymentFilterButton{
+  margin-left: 5px;
+  height: 55px;
+  color: black;
+  background-color: white;
+}

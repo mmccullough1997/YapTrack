@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import Card from '@mui/material/Card';
@@ -36,8 +37,10 @@ export default function BillCards({ billObj }) {
 
   const handlePayment = () => {
     const newPayment = {
-      billFirebaseKey: billObj.billFirebaseKey, dueDate: billObj.dueDate, amount: billObj.amount, paidDate: new Date(), uid: user.uid, payee: billObj.payee,
+      billFirebaseKey: billObj.billFirebaseKey, dueDate: billObj.dueDate, amount: billObj.amount, paidDate: new Date(new Date().getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString(), uid: user.uid, payee: billObj.payee,
     };
+    const isoFormattedPaidDate = newPayment.paidDate.slice(0, -14) + ('T00:00:00-05:00');
+    newPayment.paidDate = isoFormattedPaidDate;
     createPayment(newPayment);
     getSingleBill(billObj.billFirebaseKey).then((bill) => {
       const newBillObj = {
