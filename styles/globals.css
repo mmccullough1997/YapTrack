@@ -110,3 +110,12 @@ body {
   color: black;
   background-color: white;
 }
+
+.thaGrid {
+  height: 50px;
+}
+
+/* .paymentButton{
+  display: flex;
+  justify-content: left;
+} */

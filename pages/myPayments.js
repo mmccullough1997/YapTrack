@@ -78,29 +78,29 @@ export default function myPayments() {
       </div>
 
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={0.5}>
+        <Grid container spacing={1.5}>
           <Grid xs>
             <Item className="paymentsHeader"><b>Name</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item key={bill.billFirebaseKey}>{bill.payee}</Item>
+              <Item className="thaGrid" key={bill.billFirebaseKey}>{bill.payee}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Amount Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item key={bill.billFirebaseKey}>${bill.amount}</Item>
+              <Item className="thaGrid" key={bill.billFirebaseKey}>${bill.amount}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Date Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item key={bill.billFirebaseKey}>{new Date(bill.paidDate).toLocaleDateString()}</Item>
+              <Item className="thaGrid" key={bill.billFirebaseKey}>{new Date(bill.paidDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Date Due</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item key={bill.billFirebaseKey}>{new Date(bill.dueDate).toLocaleDateString()}</Item>
+              <Item className="thaGrid" key={bill.billFirebaseKey}>{new Date(bill.dueDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
         </Grid>
