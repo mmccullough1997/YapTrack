@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
@@ -21,11 +22,20 @@ export default function myPayments() {
   const [toDate, setToDate] = React.useState('');
 
   const handleFromChange = (fromValue) => {
-    setFromDate(new Date(new Date(fromValue.$d).setDate(new Date(fromValue.$d).getDate())).toISOString());
+    const fromTheDate = new Date(fromValue.$d).toISOString();
+    setFromDate(fromTheDate.slice(0, -14) + ('T00:00:00-05:00'));
   };
 
   const handleToChange = (toValue) => {
-    setToDate(new Date(new Date(toValue.$d).setDate(new Date(toValue.$d).getDate())).toISOString());
+    const toTheDate = new Date(toValue.$d).toISOString();
+    setToDate(toTheDate.slice(0, -14) + ('T00:00:00-05:00'));
+  };
+
+  const handleClick = () => {
+    getUserPayments(user.uid).then((billPaymentsArray) => {
+      const filteredUserBillPayments = billPaymentsArray.filter((payment) => payment.paidDate >= fromDate && payment.paidDate <= toDate);
+      setLatestBillPayments(filteredUserBillPayments);
+    });
   };
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -42,10 +52,8 @@ export default function myPayments() {
       if (mounted) {
         const sortedUserBillPayments = billPaymentsArray.sort((a, b) => new Date(b.paidDate) - new Date(a.paidDate));
         setLatestBillPayments(sortedUserBillPayments);
-        // setFromDate(sortedUserBillPayments[sortedUserBillPayments.length - 1].paidDate);
-        // setToDate(sortedUserBillPayments[0].paidDate);
-        // const fromFilteredUserBillPayments = billPaymentsArray.filter((payment) => new Date(payment.paidDate) >= new Date(fromDate));
-        // const toFilteredUserBillPayments = billPaymentsArray.filter((payment) => new Date(payment.paidDate) <= new Date(toDate));
+        setFromDate(sortedUserBillPayments[sortedUserBillPayments.length - 1].paidDate);
+        setToDate(sortedUserBillPayments[0].paidDate);
       }
     });
     return function cleanup() {
@@ -64,8 +72,8 @@ export default function myPayments() {
 
       <div className="paymentFilter">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DesktopDatePicker label="From Date" inputFormat="MM/DD/YYYY" value={fromDate} onChange={handleFromChange} renderInput={(params) => <TextField {...params} />} /> <DesktopDatePicker label="To Date" inputFormat="MM/DD/YYYY" value={toDate} onChange={handleToChange} renderInput={(params) => <TextField {...params} />} />
-          <Button className="submitPaymentFilterButton" variant="outline-none"><NavigateNextRoundedIcon /></Button>
+          <DesktopDatePicker label="From Date" inputFormat="MM/DD/YY" value={fromDate} onChange={handleFromChange} renderInput={(params) => <TextField {...params} />} /> <DesktopDatePicker label="To Date" inputFormat="MM/DD/YY" value={toDate} onChange={handleToChange} renderInput={(params) => <TextField {...params} />} />
+          <Button className="submitPaymentFilterButton" variant="outline-none" onClick={handleClick}><NavigateNextRoundedIcon /></Button>
         </LocalizationProvider>
       </div>
 
