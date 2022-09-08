@@ -52,8 +52,8 @@ export default function myPayments() {
       if (mounted) {
         const sortedUserBillPayments = billPaymentsArray.sort((a, b) => new Date(b.paidDate) - new Date(a.paidDate));
         setLatestBillPayments(sortedUserBillPayments);
-        setFromDate(sortedUserBillPayments[sortedUserBillPayments.length - 1].paidDate);
-        setToDate(sortedUserBillPayments[0].paidDate);
+        setFromDate(sortedUserBillPayments[sortedUserBillPayments.length - 1]?.paidDate);
+        setToDate(sortedUserBillPayments[0]?.paidDate);
       }
     });
     return function cleanup() {
