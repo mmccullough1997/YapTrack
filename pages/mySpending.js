@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable quotes */
@@ -11,15 +12,6 @@ export default function mySpending() {
   const { user } = useAuth();
   const [data, setData] = React.useState([]);
 
-  // const data = [
-  //   ['Task', 'Hours per Day'],
-  //   ['Work', 11],
-  //   ['Eat', 2],
-  //   ['Commute', 2],
-  //   ['Watch TV', 2],
-  //   ['Sleep', 7],
-  // ];
-
   const options = {
     is3D: true,
     height: 700,
@@ -29,11 +21,14 @@ export default function mySpending() {
     let mounted = true;
     if (mounted) {
       getUserPayments(user.uid).then((billPaymentsArray) => {
-        const tags = billPaymentsArray.map((payment) => payment.tagName);
-        const amounts = billPaymentsArray.map((payment) => payment.amount);
-        const preData = tags.map((e, i) => [e, amounts[i]]);
-        preData.unshift(['Tag', 'Amount']);
-        setData(preData);
+        const h = Object.values(billPaymentsArray.reduce((c, { tagName, amount }) => {
+          c[tagName] = c[tagName] || { tagName, amount: 0 };
+          c[tagName].amount += amount;
+          return c;
+        }, {}));
+        const output = h.map((obj) => Object.keys(obj).map((key) => obj[key]));
+        output.unshift(['Tag', 'Amount']);
+        setData(output);
       });
     }
     return function cleanup() {
