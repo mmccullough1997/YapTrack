@@ -17,6 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -232,6 +233,28 @@ export default function MiniDrawer() {
                   <PaymentsIcon />
                 </ListItemIcon>
                 <ListItemText sx={{ opacity: open ? 1 : 0 }}>My Payments</ListItemText>
+              </ListItemButton>
+            </Link>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <Link passHref href="/mySpending">
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <AttachMoneyRoundedIcon />
+                </ListItemIcon>
+                <ListItemText sx={{ opacity: open ? 1 : 0 }}>My Spending</ListItemText>
               </ListItemButton>
             </Link>
           </ListItem>

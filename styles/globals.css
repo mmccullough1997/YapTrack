@@ -96,3 +96,31 @@ body {
 .paymentsHeader{
   font-family: 'Courier New', Courier, monospace;
 }
+
+.paymentFilter{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.submitPaymentFilterButton{
+  margin-left: 5px;
+  height: 55px;
+  color: black;
+  background-color: white;
+}
+
+.thaGrid {
+  height: 50px;
+}
+
+.mySpendingSubheader{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.searchPageSubheader {
+  margin-bottom: 30px;
+}
