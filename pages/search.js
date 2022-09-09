@@ -26,8 +26,8 @@ export default function SearchPage() {
 
   return (
     <>
-      <h1>Search Results</h1>
-      <h2>You searched for...{router.query.keyword.toLocaleUpperCase()}</h2>
+      <h1><u>Search Results</u></h1>
+      <h2 className="searchPageSubheader">You searched for...{router.query.keyword.toLocaleUpperCase()}</h2>
       <div>
         {filteredData.length ? filteredData.map((bill) => (
           <BillCards key={bill.billFirebaseKey} billObj={bill} />
