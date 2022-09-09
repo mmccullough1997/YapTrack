@@ -47,7 +47,7 @@ export default function mySpending() {
       <hr />
 
       <div className="mySpendingSubheader">
-        <h5><u>Breakdown of Spending by Tag</u></h5>
+        <h5><b>Breakdown of Spending</b></h5>
       </div>
 
       <Chart
