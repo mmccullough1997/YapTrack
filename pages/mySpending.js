@@ -46,6 +46,10 @@ export default function mySpending() {
 
       <hr />
 
+      <div className="mySpendingSubheader">
+        <h5><u>Breakdown of Spending by Tag</u></h5>
+      </div>
+
       <Chart
         className="chart"
         chartType="PieChart"

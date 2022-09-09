@@ -114,3 +114,9 @@ body {
 .thaGrid {
   height: 50px;
 }
+
+.mySpendingSubheader{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
