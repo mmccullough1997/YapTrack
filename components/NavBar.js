@@ -12,7 +12,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {
   Avatar, Button as MuiButton, Grid, ListItemText, Menu, MenuItem,
 } from '@mui/material';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -122,7 +121,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} style={{ backgroundColor: '#8CC0DE' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -182,14 +181,12 @@ export default function MiniDrawer() {
         </Toolbar>
       </AppBar>
 
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} PaperProps={{ sx: { backgroundColor: '#8CC0DE', color: 'grey' } }}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-
-        <Divider />
 
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>
@@ -259,8 +256,6 @@ export default function MiniDrawer() {
             </Link>
           </ListItem>
         </List>
-
-        <Divider />
 
         <List>
           <ListItem

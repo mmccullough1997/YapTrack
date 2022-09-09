@@ -15,6 +15,7 @@ export default function mySpending() {
   const options = {
     is3D: true,
     height: 700,
+    backgroundColor: "#FAF0D7",
   };
 
   React.useEffect(() => {

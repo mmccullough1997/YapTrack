@@ -44,7 +44,7 @@ body {
 .container{
   margin-top:85px;
   margin-left:100px;
-  /* background-color: green; */
+  /* background-color: #FFD4C9; */
   max-width:92vw;
 }
 
@@ -56,11 +56,11 @@ body {
   margin-top: 10px;
 }
 
-/* #__next{
-  background-color: #FFD4C9;
-  width: 100%;
-  height: 100vh;
-} */
+#__next{
+  background-color: #FAF0D7;
+  width: 100vw;
+  height: 150vh;
+}
 
 .header{
   display:flex;
@@ -80,17 +80,17 @@ body {
 
 .red{
   color: red;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .orange{
   color: orange;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .green{
   color: green;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .paymentsHeader{
@@ -108,7 +108,7 @@ body {
   margin-left: 5px;
   height: 55px;
   color: black;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .thaGrid {
@@ -123,4 +123,14 @@ body {
 
 .searchPageSubheader {
   margin-bottom: 30px;
+}
+
+.datePicker{
+  background-color: white;
+}
+
+.filters{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
