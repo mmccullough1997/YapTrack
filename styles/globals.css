@@ -1,4 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import 'react-big-calendar/lib/css/react-big-calendar.css';
+
 
 html,
 body {
@@ -133,4 +135,65 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.monthAtAGlanceButton {
+  display: flex;
+  margin-left: auto;
+}
+
+.rbc-off-range-bg {
+  background: lightgray !important
+}
+
+.rbc-header {
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0%;
+          flex: 1 0 0%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 3px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 90%;
+  min-height: 0;
+  border-bottom: 1px solid black !important
+}
+.rbc-header + .rbc-header {
+  border-left: 1px solid black !important
+}
+.rbc-rtl .rbc-header + .rbc-header {
+  border-left-width: 0;
+  border-right: 1px solid black !important
+}
+
+.rbc-month-view {
+  position: relative;
+  border: 1px solid black !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  width: 100%;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  height: 100%;
+}
+
+.rbc-month-row + .rbc-month-row {
+  border-top: 1px solid black !important;
+}
+
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid black !important;
 }
