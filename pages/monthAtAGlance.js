@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable global-require */
@@ -34,6 +36,9 @@ function monthAtAGlance() {
         start: bill.dueDate,
         allDay: true,
         end: bill.dueDate,
+        isPaid: bill.isPaid,
+        isClosed: bill.isClosed,
+        backgroundColor: new Date() > new Date(bill.dueDate) && bill.isPaid === false && bill.isClosed === false ? 'red' : bill.isPaid === true ? 'green' : bill.recurrenceName === 'Monthly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7 ? 'orange' : bill.recurrenceName === 'Weekly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 3 ? 'orange' : bill.recurrenceName === 'BiWeekly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 5 ? 'orange' : bill.recurrenceName === 'Quarterly' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7 ? 'orange' : bill.recurrenceName === 'Annually' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7 ? 'orange' : bill.recurrenceName === 'Once' && bill.isPaid === false && (Math.abs(new Date(bill.dueDate).getTime() - new Date().getTime())) / (24 * 60 * 60 * 1000) <= 7 ? 'orange' : 'blue',
       }));
       setBills(mapa);
     });
@@ -54,6 +59,10 @@ function monthAtAGlance() {
           startAccessor="start"
           endAccessor="end"
           style={{ height: 700, margin: '20px' }}
+          eventPropGetter={(event) => {
+            const { backgroundColor } = event;
+            return { style: { backgroundColor } };
+          }}
         />
       </div>
     </div>
