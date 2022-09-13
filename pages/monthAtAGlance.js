@@ -53,7 +53,7 @@ function monthAtAGlance() {
           events={bills}
           startAccessor="start"
           endAccessor="end"
-          style={{ height: 700, margin: '50px' }}
+          style={{ height: 700, margin: '20px' }}
         />
       </div>
     </div>
