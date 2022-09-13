@@ -22,12 +22,12 @@ export default function mySpending() {
     let mounted = true;
     if (mounted) {
       getUserPayments(user.uid).then((billPaymentsArray) => {
-        const h = Object.values(billPaymentsArray.reduce((c, { tagName, amount }) => {
+        const h = Object?.values(billPaymentsArray?.reduce((c, { tagName, amount }) => {
           c[tagName] = c[tagName] || { tagName, amount: 0 };
           c[tagName].amount += amount;
           return c;
         }, {}));
-        const output = h.map((obj) => Object.keys(obj).map((key) => obj[key]));
+        const output = h?.map((obj) => Object?.keys(obj).map((key) => obj[key]));
         output.unshift(['Tag', 'Amount']);
         setData(output);
       });
