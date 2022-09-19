@@ -10,6 +10,10 @@ const clientCredentials = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  calendarClientId: process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_ID,
+  calendarApiKey: process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY,
+  discoveryDoc: process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_DISCOVERY_DOC,
+  scopes: process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_SCOPES,
 };
 
 if (!firebase.apps.length) {
