@@ -43,14 +43,14 @@ export default function myBills() {
 
       <hr />
 
-      <div className="catFilter filters">
+      <div className="filters">
         <Stack direction="row" spacing={1}>
-          <Chip label="Utilities" variant="outlined" onClick={handleClick} />
-          <Chip label="Health" variant="outlined" onClick={handleClick} />
-          <Chip label="Entertainment" variant="outlined" onClick={handleClick} />
-          <Chip label="Home" variant="outlined" onClick={handleClick} />
-          <Chip label="Closed" variant="outlined" onClick={handleClick} />
-          <Chip label="All" variant="outlined" onClick={handleClick} />
+          <Chip style={{ backgroundColor: 'grey', color: 'white' }} label="Utilities" onClick={handleClick} />
+          <Chip style={{ backgroundColor: 'grey', color: 'white' }} label="Health" variant="outlined" onClick={handleClick} />
+          <Chip style={{ backgroundColor: 'grey', color: 'white' }} label="Entertainment" variant="outlined" onClick={handleClick} />
+          <Chip style={{ backgroundColor: 'grey', color: 'white' }} label="Home" variant="outlined" onClick={handleClick} />
+          <Chip style={{ backgroundColor: 'grey', color: 'white' }} label="Closed" variant="outlined" onClick={handleClick} />
+          <Chip style={{ backgroundColor: 'grey', color: 'white' }} label="All" variant="outlined" onClick={handleClick} />
         </Stack>
       </div>
 

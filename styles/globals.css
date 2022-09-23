@@ -1,4 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import 'react-big-calendar/lib/css/react-big-calendar.css';
+
 
 html,
 body {
@@ -44,7 +46,7 @@ body {
 .container{
   margin-top:85px;
   margin-left:100px;
-  /* background-color: green; */
+  /* background-color: #FFD4C9; */
   max-width:92vw;
 }
 
@@ -56,11 +58,11 @@ body {
   margin-top: 10px;
 }
 
-/* #__next{
-  background-color: #FFD4C9;
-  width: 100%;
-  height: 100vh;
-} */
+#__next{
+  background-color: #FAF0D7;
+  width: 100vw;
+  height: 150vh;
+}
 
 .header{
   display:flex;
@@ -80,17 +82,17 @@ body {
 
 .red{
   color: red;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .orange{
   color: orange;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .green{
   color: green;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .paymentsHeader{
@@ -108,7 +110,7 @@ body {
   margin-left: 5px;
   height: 55px;
   color: black;
-  background-color: white;
+  background-color: #FAF0D7;
 }
 
 .thaGrid {
@@ -123,4 +125,75 @@ body {
 
 .searchPageSubheader {
   margin-bottom: 30px;
+}
+
+.datePicker{
+  background-color: white;
+}
+
+.filters{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.monthAtAGlanceButton {
+  display: flex;
+  margin-left: auto;
+}
+
+.rbc-off-range-bg {
+  background: lightgray !important
+}
+
+.rbc-header {
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0%;
+          flex: 1 0 0%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 3px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 90%;
+  min-height: 0;
+  border-bottom: 1px solid black !important
+}
+.rbc-header + .rbc-header {
+  border-left: 1px solid black !important
+}
+.rbc-rtl .rbc-header + .rbc-header {
+  border-left-width: 0;
+  border-right: 1px solid black !important
+}
+
+.rbc-month-view {
+  position: relative;
+  border: 1px solid black !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  width: 100%;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  height: 100%;
+}
+
+.rbc-month-row + .rbc-month-row {
+  border-top: 1px solid black !important;
+}
+
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid black !important;
 }

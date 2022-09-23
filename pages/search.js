@@ -13,7 +13,7 @@ export default function SearchPage() {
     getUserBills(user.uid).then((billArr) => {
       const value = router.query.keyword;
       setFilteredData(billArr);
-      const results = billArr.filter((bill) => bill.payee.toLowerCase().includes(value.toLowerCase()));
+      const results = billArr.filter((bill) => bill.payee.toLowerCase().includes(value.toLowerCase()) || bill.tagName.toLowerCase().includes(value.toLowerCase()));
       setFilteredData(results);
     });
   };

@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { Button } from 'react-bootstrap';
 import { getUserBills, updateBill } from '../api/billData';
 import BillCard from '../components/BillCard';
 import { useAuth } from '../utils/context/authContext';
@@ -13,6 +14,10 @@ function Home() {
   const [dueSoon, setDueSoon] = useState([]);
   const [paidBills, setPaidBills] = useState([]);
   const router = useRouter();
+
+  const handleMonthButton = () => {
+    router.push('/monthAtAGlance');
+  };
 
   const getOverdueBills = () => {
     getUserBills(user.uid).then((userBillsArray) => {
@@ -83,6 +88,7 @@ function Home() {
         <h5>My Dashboard</h5>
         <p>{`${new Date().toLocaleString('default', { weekday: 'long' })}, ${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`}</p>
       </div>
+      <Button className="monthAtAGlanceButton" onClick={handleMonthButton}>Month At a Glance</Button>
 
       <hr />
 

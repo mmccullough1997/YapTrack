@@ -72,7 +72,7 @@ export default function myPayments() {
 
       <div className="paymentFilter">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DesktopDatePicker label="From Date" inputFormat="MM/DD/YY" value={fromDate} onChange={handleFromChange} renderInput={(params) => <TextField {...params} />} /> <DesktopDatePicker label="To Date" inputFormat="MM/DD/YY" value={toDate} onChange={handleToChange} renderInput={(params) => <TextField {...params} />} />
+          <DesktopDatePicker className="datePicker" label="From Date" inputFormat="MM/DD/YY" value={fromDate} onChange={handleFromChange} renderInput={(params) => <TextField {...params} />} /> <DesktopDatePicker className="datePicker" label="To Date" inputFormat="MM/DD/YY" value={toDate} onChange={handleToChange} renderInput={(params) => <TextField {...params} />} />
           <Button className="submitPaymentFilterButton" variant="outline-none" onClick={handleClick}><NavigateNextRoundedIcon /></Button>
         </LocalizationProvider>
       </div>

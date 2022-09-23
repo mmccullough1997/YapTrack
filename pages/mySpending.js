@@ -15,18 +15,19 @@ export default function mySpending() {
   const options = {
     is3D: true,
     height: 700,
+    backgroundColor: "#FAF0D7",
   };
 
   React.useEffect(() => {
     let mounted = true;
     if (mounted) {
       getUserPayments(user.uid).then((billPaymentsArray) => {
-        const h = Object.values(billPaymentsArray.reduce((c, { tagName, amount }) => {
+        const h = Object?.values(billPaymentsArray?.reduce((c, { tagName, amount }) => {
           c[tagName] = c[tagName] || { tagName, amount: 0 };
           c[tagName].amount += amount;
           return c;
         }, {}));
-        const output = h.map((obj) => Object.keys(obj).map((key) => obj[key]));
+        const output = h?.map((obj) => Object?.keys(obj).map((key) => obj[key]));
         output.unshift(['Tag', 'Amount']);
         setData(output);
       });
@@ -47,7 +48,7 @@ export default function mySpending() {
       <hr />
 
       <div className="mySpendingSubheader">
-        <h5><b>Breakdown of Spending</b></h5>
+        <h5><b>Breakdown of Bills by Tag</b></h5>
       </div>
 
       <Chart

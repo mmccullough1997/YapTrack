@@ -2,7 +2,7 @@
   "-NACB2xeaAoIlsGEZTMi": {
     "amount": 154.76,
     "billFirebaseKey": "-NACB2xeaAoIlsGEZTMi",
-    "dueDate": "2022-09-01T00:00:00-05:00",
+    "dueDate": "2022-10-01T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "Nashville Electric Service",
@@ -14,7 +14,7 @@
   "-NACBLkl8YM1rc3qJOc7": {
     "amount": 1623,
     "billFirebaseKey": "-NACBLkl8YM1rc3qJOc7",
-    "dueDate": "2022-09-01T00:00:00-05:00",
+    "dueDate": "2022-09-30T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "SWBC Mortgage",
@@ -26,7 +26,7 @@
   "-NACBZzhB8phkjY_AbPk": {
     "amount": 45,
     "billFirebaseKey": "-NACBZzhB8phkjY_AbPk",
-    "dueDate": "2022-09-15T00:00:00-05:00",
+    "dueDate": "2022-09-23T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "YMCA",
@@ -38,7 +38,7 @@
   "-NACBq46JOcGrwO6IPVI": {
     "amount": 10.98,
     "billFirebaseKey": "-NACBq46JOcGrwO6IPVI",
-    "dueDate": "2022-09-15T00:00:00-05:00",
+    "dueDate": "2022-10-01T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "Spotify",
@@ -50,7 +50,7 @@
   "-NACC0i_vbeN36jM6ym4": {
     "amount": 192,
     "billFirebaseKey": "-NACC0i_vbeN36jM6ym4",
-    "dueDate": "2022-09-01T00:00:00-05:00",
+    "dueDate": "2022-10-01T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "HOA",
@@ -62,7 +62,7 @@
   "-NACCEbYEuxCp7MrTOUp": {
     "amount": 50,
     "billFirebaseKey": "-NACCEbYEuxCp7MrTOUp",
-    "dueDate": "2022-09-10T00:00:00-05:00",
+    "dueDate": "2022-10-10T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "Nashville Metro Water",
@@ -74,7 +74,7 @@
   "-NACCORXnc6jMHgyX-V_": {
     "amount": 55,
     "billFirebaseKey": "-NACCORXnc6jMHgyX-V_",
-    "dueDate": "2022-09-15T00:00:00-05:00",
+    "dueDate": "2022-10-15T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "Xfinity",
@@ -86,7 +86,7 @@
   "-NACCW5xCgAxRLHA5pAc": {
     "amount": 30,
     "billFirebaseKey": "-NACCW5xCgAxRLHA5pAc",
-    "dueDate": "2022-09-15T00:00:00-05:00",
+    "dueDate": "2022-10-15T00:00:00-05:00",
     "isClosed": false,
     "isPaid": false,
     "payee": "Piedmont Natural Gas",
