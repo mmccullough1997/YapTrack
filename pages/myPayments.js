@@ -82,25 +82,25 @@ export default function myPayments() {
           <Grid xs>
             <Item className="paymentsHeader"><b>Name</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item className="thaGrid" key={bill.billFirebaseKey}>{bill.payee}</Item>
+              <Item className="thaGrid" key={`${bill.billFirebaseKey}${bill.dueDate}`}>{bill.payee}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Amount Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item className="thaGrid" key={bill.billFirebaseKey}>${bill.amount}</Item>
+              <Item className="thaGrid" key={`${bill.billFirebaseKey}${bill.dueDate}`}>${bill.amount}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Date Paid</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item className="thaGrid" key={bill.billFirebaseKey}>{new Date(bill.paidDate).toLocaleDateString()}</Item>
+              <Item className="thaGrid" key={`${bill.billFirebaseKey}${bill.dueDate}`}>{new Date(bill.paidDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
           <Grid xs>
             <Item className="paymentsHeader"><b>Date Due</b></Item>
             {lastestBillPayments?.map((bill) => (
-              <Item className="thaGrid" key={bill.billFirebaseKey}>{new Date(bill.dueDate).toLocaleDateString()}</Item>
+              <Item className="thaGrid" key={`${bill.billFirebaseKey}${bill.dueDate}`}>{new Date(bill.dueDate).toLocaleDateString()}</Item>
             ))}
           </Grid>
         </Grid>
