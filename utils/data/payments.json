@@ -1,10 +1,82 @@
 {
-  "-NACFekqef6SWANmvzge": {
+  "-NCkSNAcdg3aeI2OpFtl": {
+    "amount": 10.98,
+    "billFirebaseKey": "-NACBq46JOcGrwO6IPVI",
+    "dueDate": "2022-09-01T00:00:00-05:00",
+    "paidDate": "2022-08-24T00:00:00-05:00",
+    "payee": "Spotify",
+    "paymentFirebaseKey": "-NCkSNAcdg3aeI2OpFtl",
+    "tagName": "Entertainment",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NCkSNknXc8gu6bmPKE-": {
     "amount": 45,
     "billFirebaseKey": "-NACBZzhB8phkjY_AbPk",
-    "datePaid": "2022-08-15T00:00:00-05:00",
-    "dueDate": "2022-08-15T00:00:00-05:00",
-    "paymentFirebaseKey": "-NACFekqef6SWANmvzge",
+    "dueDate": "2022-08-21T00:00:00-05:00",
+    "paidDate": "2022-08-19T00:00:00-05:00",
+    "payee": "YMCA",
+    "paymentFirebaseKey": "-NCkSNknXc8gu6bmPKE-",
+    "tagName": "Health",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NCkSOH1-YczvjMm2cgu": {
+    "amount": 10.99,
+    "billFirebaseKey": "-NCkR3g5OlhibbUT4Sh9",
+    "dueDate": "2022-07-01T00:00:00-05:00",
+    "paidDate": "2022-07-01T00:00:00-05:00",
+    "payee": "Netflix",
+    "paymentFirebaseKey": "-NCkSOH1-YczvjMm2cgu",
+    "tagName": "Entertainment",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NCkSOkRlXeq8x_980Or": {
+    "amount": 192,
+    "billFirebaseKey": "-NACC0i_vbeN36jM6ym4",
+    "dueDate": "2022-09-01T00:00:00-05:00",
+    "paidDate": "2022-08-29T00:00:00-05:00",
+    "payee": "HOA",
+    "paymentFirebaseKey": "-NCkSOkRlXeq8x_980Or",
+    "tagName": "Home",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NCkSP9362Q0bgP6GnED": {
+    "amount": 154.76,
+    "billFirebaseKey": "-NACB2xeaAoIlsGEZTMi",
+    "dueDate": "2022-09-01T00:00:00-05:00",
+    "paidDate": "2022-08-24T00:00:00-05:00",
+    "payee": "Nashville Electric Service",
+    "paymentFirebaseKey": "-NCkSP9362Q0bgP6GnED",
+    "tagName": "Utilities",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NCkSPZ-rmLjzeneZnFE": {
+    "amount": 1623,
+    "billFirebaseKey": "-NACBLkl8YM1rc3qJOc7",
+    "dueDate": "2022-08-30T00:00:00-05:00",
+    "paidDate": "2022-08-24T00:00:00-05:00",
+    "payee": "SWBC Mortgage",
+    "paymentFirebaseKey": "-NCkSPZ-rmLjzeneZnFE",
+    "tagName": "Home",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NCkSQRhyyoYBEs7jcXC": {
+    "amount": 10,
+    "billFirebaseKey": "-NCkR6uwY1SLHSwdz-Ze",
+    "dueDate": "2022-07-30T00:00:00-05:00",
+    "paidDate": "2022-07-26T00:00:00-05:00",
+    "payee": "Criterion Channel",
+    "paymentFirebaseKey": "-NCkSQRhyyoYBEs7jcXC",
+    "tagName": "Entertainment",
+    "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
+  },
+  "-NCkSRvbmAFnHCZjwKLi": {
+    "amount": 115,
+    "billFirebaseKey": "-NCkRAqslcYNfQIdCBup",
+    "dueDate": "2022-09-05T00:00:00-05:00",
+    "paidDate": "2022-09-01T00:00:00-05:00",
+    "payee": "Geico",
+    "paymentFirebaseKey": "-NCkSRvbmAFnHCZjwKLi",
+    "tagName": "Utilities",
     "uid": "JcA2m46pnlM0v76szlAtF8m11Q02"
   }
 }
